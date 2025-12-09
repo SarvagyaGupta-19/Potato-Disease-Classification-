@@ -2553,26 +2553,30 @@
                     }
                     
                     // Update the UI with real results from backend
-                    const diseaseClass = result.class.toLowerCase();
+                    const diseaseClass = (result.class || '').toLowerCase();
                     
                     // Convert class name to display name
-                    let displayName = result.class
-                        .replace('Potato___', '')
-                        .replace('_', ' ')
-                        .replace('Early_blight', 'Early Blight')
-                        .replace('Late_blight', 'Late Blight')
-                        .replace('healthy', 'Healthy');
+                    let displayName;
+                    if (diseaseClass === 'early_blight') {
+                        displayName = 'Early Blight';
+                    } else if (diseaseClass === 'late_blight') {
+                        displayName = 'Late Blight';
+                    } else if (diseaseClass === 'healthy') {
+                        displayName = 'Healthy';
+                    } else {
+                        displayName = (result.class || '').replace(/_/g, ' ').trim();
+                    }
                     
                     document.getElementById('diseaseName').textContent = displayName;
                     document.getElementById('confidenceValue').textContent = `${(result.confidence * 100).toFixed(1)}%`;
                     document.getElementById('confidenceBadge').textContent = displayName;
                     
                     // Update disease description based on result
-                    if (diseaseClass.includes('early blight')) {
+                    if (diseaseClass.includes('early_blight')) {
                         document.getElementById('diseaseDescription').textContent = 'Caused by Alternaria solani fungus. Early detection allows for effective treatment.';
                         document.getElementById('resultIcon').innerHTML = '<i class="fas fa-bug"></i>';
                         document.getElementById('resultIcon').className = 'result-icon early-blight';
-                    } else if (diseaseClass.includes('late blight')) {
+                    } else if (diseaseClass.includes('late_blight')) {
                         document.getElementById('diseaseDescription').textContent = 'Caused by Phytophthora infestans. Requires immediate attention and treatment.';
                         document.getElementById('resultIcon').innerHTML = '<i class="fas fa-virus"></i>';
                         document.getElementById('resultIcon').className = 'result-icon late-blight';
