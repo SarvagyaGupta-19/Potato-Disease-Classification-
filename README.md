@@ -182,9 +182,11 @@ Minor-project/
 2. **Start TensorFlow Serving (Docker)**
    ```powershell
    # Windows
-   docker run -d -p 8501:8501 `
-     --mount type=bind,source=C:\Users\sarva\Downloads\Minor-project\models\3,target=/models/potatoes_model/1 `
-     -e MODEL_NAME=potatoes_model -t tensorflow/serving
+ docker run --name tf-potato `
+  -p 8501:8501 -p 8500:8500 `
+  -v "C:\Users\sarva\Downloads\Minor-project\models:/models/potato" `
+  -e MODEL_NAME=potato `
+  tensorflow/serving
    ```
    
    ```bash
@@ -298,7 +300,7 @@ Content-Type: application/json
 
 ### Dataset
 - **Source**: PlantVillage Dataset (Cornell University)
-- **Total Images**: ~2,000
+- **Total Images**: ~12,000
 - **Classes**: Early Blight, Late Blight, Healthy
 - **Split**: 70% Training, 15% Validation, 15% Testing
 
@@ -326,7 +328,7 @@ Flatten → Dense (64) + ReLU → Dense (3) + Softmax
 
 **Per-Class Accuracy:**
 - Early Blight: 98.7% (148/150)
-- Late Blight: 87.3% (131/150)
+- Late Blight: 96.3% (131/150)
 - Healthy: 97.3% (142/146)
 
 ### Training Configuration
