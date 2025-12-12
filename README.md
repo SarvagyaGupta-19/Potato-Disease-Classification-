@@ -126,6 +126,8 @@ Our model accurately classifies potato leaf images into three distinct categorie
 **AI Chatbot Assistant**
 
 ![Chatbot Interface](Outputs's/Screenshot%202025-12-12%20173036.png)
+
+
 *Context-aware agricultural advisor powered by Google Gemini API with bilingual support*
 
 **Additional Features**
@@ -653,18 +655,12 @@ Please ensure:
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License** - see the LICENSE file for details.
-
----
-
 ## 👥 Authors
 
 **Sarvagya Gupta** 
 
 - GitHub: [@sarvagya-019](https://github.com/sarvagya-019) 
-- Repository: [Minor-project](https://github.com/sarvagya-019/Potato-Disease-Classification-.git)
+- Repository: [Potato_Classification](https://github.com/SarvagyaGupta-19/Potato-Disease-Classification-.git)
 
 ---
 
