@@ -1,0 +1,17 @@
+# Railway.app Configuration
+# This file enables deployment to Railway.app
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile.free"
+
+[deploy]
+startCommand = "uvicorn backend.main_free:app --host 0.0.0.0 --port $PORT"
+healthcheckPath = "/health"
+healthcheckTimeout = 30
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
+
+[env]
+ENVIRONMENT = "production"
+MODEL_PATH = "models/best_model.keras"
