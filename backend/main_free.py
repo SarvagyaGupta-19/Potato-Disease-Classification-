@@ -32,29 +32,34 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load TensorFlow model at startup (no TF Serving needed for free tier)
+# Model will be loaded lazily on first request to speed up startup
 MODEL_PATH = os.getenv("MODEL_PATH", "models/best_model.keras")
-logger.info(f"Loading model from {MODEL_PATH}...")
-
-try:
-    model = keras.models.load_model(MODEL_PATH)
-    logger.info("✅ Model loaded successfully!")
-except Exception as e:
-    logger.error(f"❌ Failed to load model: {str(e)}")
-    model = None
-
+model = None
 CLASS_NAMES = ["Early_blight", "Late_blight", "Healthy"]
+
+def load_model():
+    """Load model on first request (lazy loading)"""
+    global model
+    if model is None:
+        logger.info(f"Loading model from {MODEL_PATH}...")
+        try:
+            model = keras.models.load_model(MODEL_PATH)
+            logger.info("✅ Model loaded successfully!")
+        except Exception as e:
+            logger.error(f"❌ Failed to load model: {str(e)}")
+            raise HTTPException(status_code=500, detail="Model loading failed")
+    return model
 
 
 @app.on_event("startup")
 async def startup_event():
-    """Log startup information"""
+    """Log startup information - model loads on first request"""
     logger.info("="*50)
     logger.info("🚀 Potato Disease Detection API Starting...")
-    logger.info(f"📊 Model Status: {'✅ Loaded' if model else '❌ Not Loaded'}")
     logger.info(f"🌐 Environment: {os.getenv('ENVIRONMENT', 'development')}")
     logger.info(f"🔑 Gemini API Key: {'✅ Set' if os.getenv('GEMINI_API_KEY') else '❌ Not Set'}")
     logger.info(f"🎯 Classes: {CLASS_NAMES}")
+    logger.info("⚡ Model will load on first prediction request")
     logger.info("="*50)
 
 
@@ -80,7 +85,7 @@ async def health_check():
     """Detailed health check"""
     return {
         "api": "healthy",
-        "model": "loaded" if model else "not_loaded",
+        "model": "loaded" if model is not None else "not_loaded",
         "classes": CLASS_NAMES,
         "environment": os.getenv("ENVIRONMENT", "development")
     }
@@ -108,11 +113,8 @@ async def predict(file: UploadFile = File(...)):
         - class_index: Index of predicted class
         - confidence: Prediction confidence (0-1)
     """
-    if model is None:
-        raise HTTPException(
-            status_code=503,
-            detail="Model not loaded. Please contact administrator."
-        )
+    # Load model on first request
+    current_model = load_model()
     
     # Validate file type
     if file.content_type and not file.content_type.startswith("image/"):
@@ -133,7 +135,7 @@ async def predict(file: UploadFile = File(...)):
         img_batch = np.expand_dims(image, 0)
         
         # Make prediction directly with embedded model
-        prediction = model.predict(img_batch, verbose=0)[0]
+        prediction = current_model.predict(img_batch, verbose=0)[0]
         
         predicted_index = int(np.argmax(prediction))
         predicted_class = CLASS_NAMES[predicted_index]
