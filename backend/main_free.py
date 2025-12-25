@@ -9,7 +9,7 @@ from PIL import Image
 from io import BytesIO
 import os
 import logging
-from chatbot import router as chatbot_router
+from backend.chatbot import router as chatbot_router
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
