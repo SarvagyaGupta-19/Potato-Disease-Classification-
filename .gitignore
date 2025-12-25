@@ -22,16 +22,24 @@ ENV/
 .ipynb_checkpoints
 *.ipynb_checkpoints/
 
-# TensorFlow/Keras
-models/*
-!models/.gitkeep
+# TensorFlow/Keras (keep essential model files)
+# models/* - COMMENTED OUT to include model files
+# !models/.gitkeep
 *.h5
-*.pb
+# *.pb - Keep saved_model.pb if needed
 *.ckpt
 *.index
 *.meta
 *.data-*
 checkpoint
+
+# Ignore only large/unnecessary model files
+models/1/
+models/*/saved_model.pb
+models/*/variables/
+models/*/assets/
+models/fingerprint.pb
+models/models.config
 
 # Logs
 *.log

@@ -1,0 +1,18 @@
+{
+  "test_accuracy": 0.9644444584846497,
+  "test_loss": 0.23155568540096283,
+  "precision": 0.9645262549464231,
+  "recall": 0.9644444444444444,
+  "f1_score": 0.9644204420442045,
+  "total_epochs": 50,
+  "phase1_epochs": 30,
+  "phase2_epochs": 20,
+  "image_size": 224,
+  "model_architecture": "MobileNetV2_TransferLearning",
+  "classes": [
+    "Potato___Early_blight",
+    "Potato___Late_blight",
+    "Potato___healthy"
+  ],
+  "training_date": "2025-12-09"
+}
