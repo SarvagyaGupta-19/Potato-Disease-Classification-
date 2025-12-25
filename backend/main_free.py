@@ -46,6 +46,18 @@ except Exception as e:
 CLASS_NAMES = ["Early_blight", "Late_blight", "Healthy"]
 
 
+@app.on_event("startup")
+async def startup_event():
+    """Log startup information"""
+    logger.info("="*50)
+    logger.info("🚀 Potato Disease Detection API Starting...")
+    logger.info(f"📊 Model Status: {'✅ Loaded' if model else '❌ Not Loaded'}")
+    logger.info(f"🌐 Environment: {os.getenv('ENVIRONMENT', 'development')}")
+    logger.info(f"🔑 Gemini API Key: {'✅ Set' if os.getenv('GEMINI_API_KEY') else '❌ Not Set'}")
+    logger.info(f"🎯 Classes: {CLASS_NAMES}")
+    logger.info("="*50)
+
+
 @app.get("/")
 async def root():
     """Root endpoint"""
