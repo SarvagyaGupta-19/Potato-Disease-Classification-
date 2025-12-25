@@ -1,14 +1,11 @@
 # Railway.app Configuration
-# This file enables deployment to Railway.app
-
-[build]
-builder = "DOCKERFILE"
-dockerfilePath = "Dockerfile.free"
+# Let Railway auto-detect the build (Nixpacks)
+# Removed [build] section to use Railway's smart detection
 
 [deploy]
-startCommand = "uvicorn backend.main_free:app --host 0.0.0.0 --port $PORT"
-healthcheckPath = "/health"
-healthcheckTimeout = 30
+startCommand = "uvicorn backend.main_free:app --host 0.0.0.0 --port $PORT --timeout-keep-alive 120"
+healthcheckPath = "/ping"
+healthcheckTimeout = 100
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
 

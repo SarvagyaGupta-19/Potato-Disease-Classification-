@@ -71,8 +71,8 @@ async def root():
 
 @app.get("/ping")
 async def ping():
-    """Health check endpoint"""
-    return {"status": "healthy", "message": "Hello, I am alive"}
+    """Simple health check endpoint - responds immediately"""
+    return {"status": "ok"}
 
 
 @app.get("/health")
