@@ -133,34 +133,6 @@ Our model accurately classifies potato leaf images into three distinct categorie
 
 ---
 
-## 📸 Application Screenshots
-
-### Main Detection Interface
-
-<div align="center">
-
-**Hero Section & Upload Interface**
-
-![Main Interface](Outputs's/Screenshot%202025-12-12%20172924.png)
-*Modern, responsive UI with hero section, feature highlights, and upload area*
-
-**Image Upload & Preview**
-
-![Upload Preview](Outputs's/Screenshot%202025-12-12%20172949.png)
-*Intuitive image preview with drag-and-drop support and action buttons*
-
-**Real-time Disease Detection Results**
-
-![Detection Results](Outputs's/Screenshot%202025-12-12%20173016.png)
-*Instant predictions with confidence scoring, visual meter, and detailed disease information*
-
-**AI Chatbot Assistant**
-
-![Chatbot Interface](Outputs's/Screenshot%202025-12-12%20173036.png)
-
-
-*Context-aware agricultural advisor powered by Google Gemini API with bilingual support*
-
 **Additional Features**
 
 ![Application Features](Outputs's/Screenshot%202025-12-12%20173106.png)
