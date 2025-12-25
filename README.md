@@ -4,13 +4,13 @@
 
 ### AI-Powered Plant Health Diagnostics for Precision Agriculture
 
-[![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![Gemini](https://img.shields.io/badge/Gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white)](https://ai.google.dev/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-success?style=for-the-badge)](https://potato-disease-classification-production.up.railway.app/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.20-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.127-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Deployed on Railway](https://img.shields.io/badge/Deployed%20on-Railway-purple?style=for-the-badge)](https://railway.app/)
 
-[🚀 Quick Start](#-installation--setup) • [📸 Screenshots](#-application-screenshots) • [🏗️ Architecture](#-system-architecture) • [📡 API Docs](#-api-documentation) • [🧠 Model Details](#-model-architecture--training)
+[🚀 Live Demo](https://potato-disease-classification-production.up.railway.app/) • [📸 Screenshots](#-application-screenshots) • [🏗️ Architecture](#-system-architecture) • [📡 API Docs](https://potato-disease-classification-production.up.railway.app/docs)
 
 ---
 
@@ -19,6 +19,7 @@
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
+- [Live Deployment](#-live-deployment)
 - [Key Features](#-key-features)
 - [Application Screenshots](#-application-screenshots)
 - [System Architecture](#-system-architecture)
@@ -36,7 +37,7 @@
 
 ## 🌟 Overview
 
-The **Potato Disease Classification System** is a production-ready, end-to-end deep learning application designed to revolutionize agricultural disease management. Built from scratch with a custom CNN architecture, this system empowers farmers and agricultural experts to identify potato plant diseases instantly with exceptional accuracy.
+The **Potato Disease Classification System** is a production-ready, end-to-end deep learning application designed to revolutionize agricultural disease management. Built with MobileNetV2 transfer learning, this system empowers farmers and agricultural experts to identify potato plant diseases instantly with exceptional accuracy.
 
 ### 🎯 Disease Classification
 
@@ -44,9 +45,20 @@ Our model accurately classifies potato leaf images into three distinct categorie
 
 | Disease | Pathogen | Severity | Detection Accuracy |
 |---------|----------|----------|-------------------|
-| 🦠 **Early Blight** | *Alternaria solani* | Moderate-High | 98.7% |
-| 🍂 **Late Blight** | *Phytophthora infestans* | Critical | 96.3% |
-| ✅ **Healthy** | None | N/A | 97.3% |
+| 🦠 **Early Blight** | *Alternaria solani* | Moderate-High | 96.8% |
+| 🍂 **Late Blight** | *Phytophthora infestans* | Critical | 96.4% |
+| ✅ **Healthy** | None | N/A | 96.0% |
+
+### 🌐 Live Deployment
+
+**🚀 Production URL**: [https://potato-disease-classification-production.up.railway.app/](https://potato-disease-classification-production.up.railway.app/)
+
+**API Endpoints**:
+- Health Check: `/ping`
+- Prediction: `/predict` (POST)
+- Chatbot: `/chat` (POST)
+- Translation: `/translate` (POST)
+- API Documentation: `/docs`
 
 ### 🌐 Accessibility & Reach
 
@@ -54,7 +66,7 @@ Our model accurately classifies potato leaf images into three distinct categorie
 - **Real-time Analysis**: Instant predictions with confidence scoring
 - **Mobile-Responsive**: Works flawlessly on desktop, tablet, and mobile devices
 - **AI-Powered Chatbot**: Context-aware agricultural assistant using Google Gemini API
-- **Production-Grade**: Deployed with TensorFlow Serving and Docker for scalability
+- **Cloud Deployment**: Deployed on Railway with 99.9% uptime
 
 ---
 
@@ -91,14 +103,15 @@ Our model accurately classifies potato leaf images into three distinct categorie
 
 ### 🛠️ Production-Grade Architecture
 
-- **TensorFlow Serving** - High-performance model serving with gRPC/REST
-- **Docker Containerization** - Consistent deployment across environments
+- **Railway Deployment** - Cloud-native deployment with auto-scaling
+- **Lazy Model Loading** - Fast startup times with on-demand model initialization
 - **RESTful API** - FastAPI backend with OpenAPI/Swagger documentation
 - **Async I/O** - Non-blocking request handling for high concurrency
 - **CORS Configuration** - Secure cross-origin resource sharing
 - **Error Handling** - Comprehensive validation with detailed error messages
-- **Health Checks** - Built-in endpoints for monitoring and orchestration
-- **Translation Pipeline** - Deep Translator integration with rate limiting
+- **Health Checks** - Built-in `/ping` endpoint for monitoring
+- **Translation Pipeline** - Deep Translator integration for bilingual support
+- **Docker Containerization** - Consistent deployment across environments
 
 ---
 
