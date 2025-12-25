@@ -8,7 +8,7 @@ const CONFIG = {
     production: {
         BACKEND_URL: window.location.origin.includes('localhost') 
             ? 'http://localhost:8000' 
-            : 'https://your-api-domain.com',  // UPDATE THIS WITH YOUR PRODUCTION API URL
+            : 'https://potato-disease-classification-production.up.railway.app',
         API_TIMEOUT: 30000,
         ENABLE_ANALYTICS: true
     }
