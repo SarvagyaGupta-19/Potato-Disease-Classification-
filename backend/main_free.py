@@ -95,7 +95,7 @@ def read_file_as_image(data) -> np.ndarray:
     """Convert uploaded file to normalized numpy array"""
     try:
         image = Image.open(BytesIO(data)).convert("RGB")
-        image = image.resize((256, 256))
+        image = image.resize((224, 224))  # Model expects 224x224
         img_array = np.array(image, dtype=np.float32)
         img_array = img_array / 255.0
         return img_array
