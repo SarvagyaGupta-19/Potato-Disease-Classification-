@@ -133,15 +133,6 @@ Our model accurately classifies potato leaf images into three distinct categorie
 
 ---
 
-**Additional Features**
-
-![Application Features](Outputs's/Screenshot%202025-12-12%20173106.png)
-*Complete workflow demonstration with disease classification and recommendations*
-
-</div>
-
----
-
 ## 🏗️ System Architecture
 
 ### Microservices Architecture with AI Integration
