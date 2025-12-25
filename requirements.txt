@@ -2,8 +2,8 @@
 # Potato Disease Detection - Requirements
 # ============================================
 
-# Deep Learning & ML
-tensorflow>=2.10.0,<2.16.0
+# Deep Learning & ML (Updated for Railway compatibility)
+tensorflow>=2.16.0
 numpy>=1.23.0,<2.0.0
 matplotlib>=3.6.0
 
