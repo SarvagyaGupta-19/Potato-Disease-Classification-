@@ -38,7 +38,7 @@
 
 ## 🌟 Overview
 
-The **Potato Disease Classification System** is a production-ready, end-to-end deep learning application designed to revolutionize agricultural disease management. Built with MobileNetV2 transfer learning, this system empowers farmers and agricultural experts to identify potato plant diseases instantly with exceptional accuracy.
+The **Potato Disease Classification System** is a production-ready, end-to-end deep learning application designed to revolutionize agricultural disease management. Built with CNN (Convolutional Neural Network), this system empowers farmers and agricultural experts to identify potato plant diseases instantly with exceptional accuracy.
 
 ### 🎯 Disease Classification
 
@@ -91,7 +91,7 @@ Our model accurately classifies potato leaf images into three distinct categorie
 
 ### 🎯 Deep Learning & AI
 
-- **MobileNetV2 Transfer Learning** - Pre-trained ImageNet model fine-tuned achieving **96.4% accuracy**
+- **CNN (Convolutional Neural Network)** - Custom CNN architecture achieving **96.4% accuracy**
 - **Real-time Inference** - Sub-2s prediction with embedded Keras model (224×224 input)
 - **Multi-Class Classification** - Precise identification of Early Blight, Late Blight, and Healthy plants
 - **Confidence Scoring** - Transparent probability distribution for each prediction
