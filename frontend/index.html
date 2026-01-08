@@ -94,40 +94,6 @@
             color: var(--text);
         }
 
-        body.dark-mode .team-card {
-            background: var(--background-alt);
-            border-color: var(--border);
-        }
-
-        body.dark-mode .modal-content {
-            background: var(--background-alt);
-        }
-
-        body.dark-mode .modal-header {
-            background: var(--background-alt);
-            border-color: var(--border);
-        }
-
-        body.dark-mode .modal-close {
-            background: #334155;
-            color: #CBD5E1;
-        }
-
-        body.dark-mode .modal-close:hover {
-            background: #991b1b;
-            color: #fca5a5;
-        }
-
-        body.dark-mode .team-link {
-            background: #334155;
-            color: #CBD5E1;
-        }
-
-        body.dark-mode .team-link:hover {
-            background: var(--primary);
-            color: white;
-        }
-
         body.dark-mode .hero-subtitle,
         body.dark-mode .section-subheading,
         body.dark-mode .footer-desc,
@@ -1298,99 +1264,6 @@
             z-index: 1;
         }
 
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-        }
-
-        .team-card {
-            background: var(--background);
-            border-radius: var(--radius-md);
-            padding: 24px;
-            text-align: center;
-            transition: var(--transition);
-            border: 2px solid var(--border);
-            position: relative;
-        }
-
-        .team-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary);
-        }
-
-        .team-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-            font-size: 2.5rem;
-            color: white;
-            font-weight: 700;
-        }
-
-        .team-name {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 8px;
-        }
-
-        .team-role {
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 16px;
-            font-size: 0.9rem;
-        }
-
-        .team-links {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            position: relative;
-            z-index: 5;
-        }
-
-        .team-link {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--background-alt);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: var(--transition-fast);
-            cursor: pointer;
-            pointer-events: auto;
-            position: relative;
-            z-index: 10;
-            outline: none;
-            border: 0;
-        }
-
-        .team-link i {
-            pointer-events: none;
-            font-size: 16px;
-        }
-
-        .team-link:hover {
-            background: var(--primary);
-            color: white;
-            transform: scale(1.1);
-            filter: none;
-        }
-
-        .team-link:active {
-            transform: scale(0.95);
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -2030,64 +1903,6 @@
         </div>
     </section>
 
-    <!-- Team Modal -->
-    <div class="modal" id="teamModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>
-                    <i class="fas fa-users"></i>
-                    <span id="team-modal-title">Our Development Team</span>
-                </h2>
-                <button class="modal-close" id="closeModal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="team-grid">
-                    <div class="team-card">
-                        <div class="team-avatar">SG</div>
-                        <h3 class="team-name">Sarvagya Gupta</h3>
-                        <p class="team-role" id="team-role-1">Machine Learning Engineer</p>
-                        <div class="team-links">
-                            <a href="https://github.com/SarvagyaGupta-19" target="_blank" rel="noopener noreferrer" class="team-link" title="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/sarvagyagupta019" target="_blank" rel="noopener noreferrer" class="team-link" title="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="team-card">
-                        <div class="team-avatar">SS</div>
-                        <h3 class="team-name">Sarwagya Shah</h3>
-                        <p class="team-role" id="team-role-2">Full Stack Developer</p>
-                        <div class="team-links">
-                            <a href="https://github.com/SARWAGYASHAH" target="_blank" rel="noopener noreferrer" class="team-link" title="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/sarwagyashahonline" target="_blank" rel="noopener noreferrer" class="team-link" title="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="team-card">
-                        <div class="team-avatar">AT</div>
-                        <h3 class="team-name">Ayush Prakash Tiwari</h3>
-                        <p class="team-role" id="team-role-3">AI/ML Specialist</p>
-                        <div class="team-links">
-                            <a href="https://github.com/AyushPrakash414" target="_blank" rel="noopener noreferrer" class="team-link" title="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/ayush-prakash-tiwari-5281b2286" target="_blank" rel="noopener noreferrer" class="team-link" title="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -2100,12 +1915,6 @@
                 <div class="footer-meta">
                     <p>&copy; 2024-2025 Potato Disease Detection System. <span id="footer-rights">All rights reserved.</span></p>
                     <p style="margin-top: 5px; font-size: 0.9em; opacity: 0.8;">Developed by <strong>Sarvagya Gupta, Sarwagya Shah, Ayush Prakash Tiwari</strong></p>
-                    <div style="margin-top: 12px; display: flex; justify-content: center;">
-                        <button class="about-btn" id="aboutBtn">
-                            <i class="fas fa-users"></i>
-                            <span id="about-team-btn">Team</span>
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -2118,15 +1927,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Ensure iframe does not intercept clicks when modal is open
             const chatFrame = document.getElementById('chatbot-frame');
-            // Close modal on ESC for reliable UX
-            document.addEventListener('keydown', function(e) {
-                const teamModal = document.getElementById('teamModal');
-                if (e.key === 'Escape' && teamModal && teamModal.classList.contains('active')) {
-                    teamModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                    if (chatFrame) chatFrame.style.pointerEvents = 'auto';
-                }
-            });
+
             // Theme Toggle
             const themeToggle = document.getElementById('themeToggle');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
@@ -2161,43 +1962,12 @@
                 }
             });
 
-            // Team Modal
-            const aboutBtn = document.getElementById('aboutBtn');
-            const teamModal = document.getElementById('teamModal');
-            const closeModal = document.getElementById('closeModal');
-
-            aboutBtn.addEventListener('click', function() {
-                teamModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                if (chatFrame) chatFrame.style.pointerEvents = 'none';
-            });
-
-            closeModal.addEventListener('click', function(e) {
-                e.stopPropagation();
-                teamModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-                if (chatFrame) chatFrame.style.pointerEvents = 'auto';
-            });
-
-            teamModal.addEventListener('click', function(e) {
-                if (e.target === teamModal) {
-                    teamModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                    if (chatFrame) chatFrame.style.pointerEvents = 'auto';
-                }
-            });
-
             // Language management
             const langButtons = document.querySelectorAll('.lang-btn');
             let currentLang = 'en';
 
             const translatableIds = [
                 'header-title',
-                'about-team-btn',
-                'team-modal-title',
-                'team-role-1',
-                'team-role-2',
-                'team-role-3',
                 'hero-title-main',
                 'hero-title-highlight',
                 'hero-subtitle',
