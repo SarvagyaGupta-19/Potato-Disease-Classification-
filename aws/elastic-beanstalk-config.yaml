@@ -1,0 +1,56 @@
+# Elastic Beanstalk configuration
+# Place this file at .ebextensions/01_environment.config
+
+option_settings:
+  # Python platform settings
+  aws:elasticbeanstalk:application:environment:
+    PYTHONPATH: "/var/app/current"
+    PORT: "8000"
+  
+  # Instance settings - t3.small recommended for ML workloads
+  aws:autoscaling:launchconfiguration:
+    InstanceType: t3.small
+    RootVolumeSize: 20
+  
+  # Auto Scaling configuration
+  aws:autoscaling:asg:
+    MinSize: 1
+    MaxSize: 3
+    Cooldown: 300
+  
+  # Load Balancer configuration
+  aws:elasticbeanstalk:environment:
+    LoadBalancerType: application
+    ServiceRole: aws-elasticbeanstalk-service-role
+  
+  # Application Load Balancer settings
+  aws:elbv2:listener:443:
+    Protocol: HTTPS
+    SSLCertificateArns: arn:aws:acm:REGION:ACCOUNT_ID:certificate/CERTIFICATE_ID
+  
+  # Health check
+  aws:elasticbeanstalk:environment:process:default:
+    HealthCheckPath: /docs
+    HealthCheckInterval: 30
+    HealthCheckTimeout: 5
+    UnhealthyThresholdCount: 3
+    HealthyThresholdCount: 2
+  
+  # CloudWatch Logs
+  aws:elasticbeanstalk:cloudwatch:logs:
+    StreamLogs: true
+    DeleteOnTerminate: false
+    RetentionInDays: 7
+
+# Commands to run on deployment
+commands:
+  01_upgrade_pip:
+    command: "source /var/app/venv/*/bin/activate && pip install --upgrade pip"
+  02_install_dependencies:
+    command: "source /var/app/venv/*/bin/activate && pip install -r requirements.txt"
+
+# Container commands (run after app is set up)
+container_commands:
+  01_migrate:
+    command: "echo 'Application deployed successfully'"
+    leader_only: true
