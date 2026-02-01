@@ -1,0 +1,81 @@
+name: Deploy Frontend to S3 and CloudFront
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'frontend/**'
+  workflow_dispatch:
+
+env:
+  AWS_REGION: us-east-1
+  S3_BUCKET: potato-disease-frontend  # Update with your bucket name
+  CLOUDFRONT_DISTRIBUTION_ID: E1234567890ABC  # Update with your distribution ID
+
+jobs:
+  deploy-frontend:
+    name: Deploy Frontend to S3 + CloudFront
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Update frontend configuration
+        env:
+          BACKEND_URL: ${{ secrets.BACKEND_API_URL }}
+        run: |
+          cat > frontend/config.js <<EOF
+          const CONFIG = {
+              development: {
+                  BACKEND_URL: 'http://localhost:8000',
+                  API_TIMEOUT: 30000,
+                  ENABLE_ANALYTICS: false
+              },
+              production: {
+                  BACKEND_URL: '${BACKEND_URL}',
+                  API_TIMEOUT: 30000,
+                  ENABLE_ANALYTICS: true
+              }
+          };
+          const ENVIRONMENT = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+              ? 'development' 
+              : 'production';
+          const APP_CONFIG = CONFIG[ENVIRONMENT];
+          console.log(\`🚀 Running in \${ENVIRONMENT} mode\`);
+          console.log(\`📡 API URL: \${APP_CONFIG.BACKEND_URL}\`);
+          EOF
+
+      - name: Sync files to S3 (assets with long cache)
+        run: |
+          aws s3 sync frontend/ s3://${{ env.S3_BUCKET }}/ \
+            --delete \
+            --cache-control "max-age=31536000,public" \
+            --exclude "*.html"
+
+      - name: Sync HTML files to S3 (short cache)
+        run: |
+          aws s3 sync frontend/ s3://${{ env.S3_BUCKET }}/ \
+            --cache-control "max-age=3600,must-revalidate" \
+            --exclude "*" \
+            --include "*.html"
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ env.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
+
+      - name: Deployment summary
+        run: |
+          echo "🎉 Frontend deployed successfully!"
+          echo "S3 Bucket: ${{ env.S3_BUCKET }}"
+          echo "CloudFront Distribution: ${{ env.CLOUDFRONT_DISTRIBUTION_ID }}"
