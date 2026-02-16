@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
-        
+
         * {
             margin: 0;
             padding: 0;
@@ -24,28 +25,28 @@
             --primary-light: #34D399;
             --primary-lighter: #D1FAE5;
             --accent: #3B82F6;
-            
+
             --text: #0F172A;
             --text-secondary: #475569;
             --text-light: #64748B;
-            
+
             --background: #F8FAFC;
             --white: #FFFFFF;
             --border: #E2E8F0;
             --border-light: #F1F5F9;
-            
+
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
             --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            
+
             --radius-sm: 8px;
             --radius: 12px;
             --radius-md: 16px;
             --radius-lg: 20px;
             --radius-full: 9999px;
-            
+
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -65,7 +66,7 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        
+
         /* Chatbot Styles */
         .chatbot-container {
             position: fixed;
@@ -73,7 +74,7 @@
             right: 24px;
             z-index: 10000;
         }
-        
+
         .chat-toggle-btn {
             width: 64px;
             height: 64px;
@@ -90,7 +91,7 @@
             transition: var(--transition);
             position: relative;
         }
-        
+
         .chat-toggle-btn:hover {
             transform: scale(1.05);
             box-shadow: var(--shadow-xl);
@@ -99,7 +100,7 @@
         .chat-toggle-btn:active {
             transform: scale(0.95);
         }
-        
+
         .chat-badge {
             position: absolute;
             top: -4px;
@@ -113,7 +114,7 @@
             box-shadow: var(--shadow);
             font-family: 'Space Grotesk', sans-serif;
         }
-        
+
         .chat-window {
             position: fixed;
             bottom: 100px;
@@ -129,14 +130,15 @@
             transition: var(--transition);
             border: 1px solid var(--border-light);
         }
+
         body.dark-mode .chat-window {
             border-color: var(--border);
         }
-        
+
         .chat-window.hidden {
             display: none;
         }
-        
+
         .chat-header {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
@@ -145,17 +147,17 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .chat-header-content {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-        
+
         .chat-header-content i {
             font-size: 28px;
         }
-        
+
         .chat-header h3 {
             margin: 0;
             font-size: 17px;
@@ -163,18 +165,18 @@
             font-family: 'Space Grotesk', sans-serif;
             letter-spacing: -0.01em;
         }
-        
+
         .chat-header p {
             margin: 0;
             font-size: 13px;
             opacity: 0.9;
         }
-        
+
         .chat-header-actions {
             display: flex;
             gap: 8px;
         }
-        
+
         .chat-icon-btn {
             background: rgba(255, 255, 255, 0.2);
             border: none;
@@ -189,11 +191,11 @@
             transition: var(--transition);
             font-size: 14px;
         }
-        
+
         .chat-icon-btn:hover {
             background: rgba(255, 255, 255, 0.3);
         }
-        
+
         .chat-messages {
             flex: 1;
             overflow-y: auto;
@@ -217,14 +219,14 @@
         .chat-messages::-webkit-scrollbar-thumb:hover {
             background: var(--text-light);
         }
-        
+
         .chat-message {
             display: flex;
             gap: 12px;
             margin-bottom: 20px;
             animation: fadeInUp 0.3s ease;
         }
-        
+
         .message-avatar {
             width: 36px;
             height: 36px;
@@ -235,21 +237,21 @@
             flex-shrink: 0;
             font-size: 16px;
         }
-        
+
         .bot-message .message-avatar {
             background: linear-gradient(135deg, var(--primary-lighter), rgba(59, 130, 246, 0.15));
             color: var(--primary);
         }
-        
+
         .user-message {
             flex-direction: row-reverse;
         }
-        
+
         .user-message .message-avatar {
             background: var(--text-secondary);
             color: white;
         }
-        
+
         .message-content {
             background: var(--white);
             padding: 14px 16px;
@@ -258,42 +260,43 @@
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-light);
         }
+
         body.dark-mode .message-content {
             border-color: var(--border);
         }
-        
+
         .user-message .message-content {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             border: none;
         }
-        
+
         .message-content p {
             margin: 0 0 8px 0;
             line-height: 1.6;
             font-size: 14px;
         }
-        
+
         .message-content p:last-child {
             margin-bottom: 0;
         }
-        
+
         .message-content ul {
             margin: 8px 0;
             padding-left: 20px;
         }
-        
+
         .message-content li {
             margin: 6px 0;
             line-height: 1.5;
         }
-        
+
         .typing-indicator {
             display: flex;
             gap: 5px;
             padding: 12px;
         }
-        
+
         .typing-indicator span {
             width: 8px;
             height: 8px;
@@ -301,26 +304,30 @@
             background: var(--primary);
             animation: typing 1.4s infinite;
         }
-        
+
         .typing-indicator span:nth-child(2) {
             animation-delay: 0.2s;
         }
-        
+
         .typing-indicator span:nth-child(3) {
             animation-delay: 0.4s;
         }
-        
+
         @keyframes typing {
-            0%, 60%, 100% {
+
+            0%,
+            60%,
+            100% {
                 transform: translateY(0);
                 opacity: 0.4;
             }
+
             30% {
                 transform: translateY(-10px);
                 opacity: 1;
             }
         }
-        
+
         .chat-quick-replies {
             padding: 12px 20px;
             display: flex;
@@ -329,10 +336,11 @@
             background: var(--white);
             border-top: 1px solid var(--border-light);
         }
+
         body.dark-mode .chat-quick-replies {
             border-top-color: var(--border);
         }
-        
+
         .quick-reply-btn {
             background: var(--background);
             border: 1px solid var(--border);
@@ -344,29 +352,30 @@
             font-weight: 500;
             color: var(--text-secondary);
         }
-        
+
         .quick-reply-btn:hover {
             background: var(--primary);
             color: white;
             border-color: var(--primary);
             transform: translateY(-1px);
         }
-        
+
         .chat-input-container {
             padding: 20px;
             background: var(--white);
             border-top: 1px solid var(--border-light);
         }
+
         body.dark-mode .chat-input-container {
             border-top-color: var(--border);
         }
-        
+
         .chat-input-wrapper {
             display: flex;
             gap: 12px;
             align-items: center;
         }
-        
+
         .chat-input {
             flex: 1;
             padding: 12px 16px;
@@ -377,12 +386,12 @@
             transition: var(--transition);
             font-family: 'Inter', sans-serif;
         }
-        
+
         .chat-input:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 3px var(--primary-lighter);
         }
-        
+
         .chat-send-btn {
             width: 44px;
             height: 44px;
@@ -397,7 +406,7 @@
             transition: var(--transition);
             box-shadow: var(--shadow-sm);
         }
-        
+
         .chat-send-btn:hover {
             transform: scale(1.05);
             box-shadow: var(--shadow);
@@ -406,13 +415,13 @@
         .chat-send-btn:active {
             transform: scale(0.95);
         }
-        
+
         .chat-send-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
         }
-        
+
         .chat-status {
             font-size: 12px;
             color: var(--text-light);
@@ -420,18 +429,19 @@
             text-align: center;
             font-weight: 500;
         }
-        
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .chatbot-container {
@@ -448,9 +458,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 box-shadow: var(--shadow-lg);
             }
+
             50% {
                 box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.3), var(--shadow-lg);
             }
@@ -460,7 +473,9 @@
             animation: pulse 2s ease-in-out infinite;
         }
     </style>
+    <script src="config.js"></script>
 </head>
+
 <body>
     <!-- AI Chatbot -->
     <div id="chatbot-container" class="chatbot-container">
@@ -468,7 +483,7 @@
             <i class="fas fa-comment-dots"></i>
             <span class="chat-badge">AI</span>
         </button>
-        
+
         <div id="chat-window" class="chat-window hidden">
             <div class="chat-header">
                 <div class="chat-header-content">
@@ -487,19 +502,20 @@
                     </button>
                 </div>
             </div>
-            
+
             <div class="chat-messages" id="chat-messages">
                 <div class="chat-message bot-message">
                     <div class="message-avatar">
                         <i class="fas fa-robot"></i>
                     </div>
                     <div class="message-content">
-                        <p id="welcome-message">Hello! I'm your AI agricultural assistant. I can help you understand potato diseases, provide treatment recommendations, and answer farming questions.</p>
+                        <p id="welcome-message">Hello! I'm your AI agricultural assistant. I can help you understand
+                            potato diseases, provide treatment recommendations, and answer farming questions.</p>
                         <p id="welcome-instruction">Upload an image to get started, or ask me any question!</p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="chat-quick-replies">
                 <button class="quick-reply-btn" data-message="What is Early Blight?">
                     <span id="quick-reply-1">🦠 What is Early Blight?</span>
@@ -511,15 +527,10 @@
                     <span id="quick-reply-3">💊 Fungicide recommendations</span>
                 </button>
             </div>
-            
+
             <div class="chat-input-container">
                 <div class="chat-input-wrapper">
-                    <input 
-                        type="text" 
-                        id="chat-input" 
-                        class="chat-input" 
-                        placeholder="Type your question..."
-                    >
+                    <input type="text" id="chat-input" class="chat-input" placeholder="Type your question...">
                     <button id="chat-send-btn" class="chat-send-btn">
                         <i class="fas fa-paper-plane"></i>
                     </button>
@@ -531,8 +542,8 @@
 
     <script>
         // Chatbot JavaScript
-        const BACKEND_URL = 'https://potato-disease-classification-production.up.railway.app';
-        
+        const BACKEND_URL = APP_CONFIG.BACKEND_URL;
+
         // Chatbot state
         const chatbot = {
             isOpen: false,
@@ -575,7 +586,7 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ session_id: chatbot.sessionId })
                     });
-                    
+
                     // Clear UI
                     chatMessages.innerHTML = `
                         <div class="chat-message bot-message">
@@ -650,13 +661,13 @@
                 });
 
                 const data = await response.json();
-                
+
                 // Remove typing indicator
                 document.getElementById('typing-indicator').remove();
 
                 // Add bot response
                 addBotMessage(data.response || 'Sorry, I could not process that.');
-                
+
                 if (!data.success) {
                     chatStatus.textContent = data.error || 'Connection issue';
                     chatStatus.style.color = '#e74c3c';
@@ -690,12 +701,12 @@
         function addBotMessage(text) {
             const messageDiv = document.createElement('div');
             messageDiv.className = 'chat-message bot-message';
-            
+
             // Simple markdown-like formatting
             let formattedText = escapeHtml(text)
                 .replace(/\n\n/g, '</p><p>')
                 .replace(/\n/g, '<br>');
-            
+
             messageDiv.innerHTML = `
                 <div class="message-avatar"><i class="fas fa-robot"></i></div>
                 <div class="message-content">
@@ -731,10 +742,10 @@
         window.addEventListener('message', (event) => {
             if (event.data.type === 'predictionComplete') {
                 chatbot.lastPrediction = event.data.prediction;
-                
+
                 // Pulse the chat button to attract attention
                 chatToggleBtn.classList.add('pulse');
-                
+
                 // Auto-open chat after 2 seconds (optional)
                 // setTimeout(() => {
                 //     if (!chatbot.isOpen) {
@@ -745,4 +756,5 @@
         });
     </script>
 </body>
+
 </html>

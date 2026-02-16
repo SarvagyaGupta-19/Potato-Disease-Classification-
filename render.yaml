@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: potato-disease-backend
+    env: docker
+    plan: free
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: MODEL_PATH
+        value: models/best_model.keras
+      - key: GEMINI_API_KEY
+        generateValue: true
+      - key: ENVIRONMENT
+        value: production

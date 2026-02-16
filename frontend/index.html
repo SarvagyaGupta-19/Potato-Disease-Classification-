@@ -1621,6 +1621,7 @@
             }
         }
     </style>
+    <script src="config.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -1921,8 +1922,8 @@
     </footer>
 
     <script>
-        // Define backend URL in one place for easy configuration
-        const BACKEND_URL = 'https://potato-disease-classification-production.up.railway.app';
+        // Define backend URL from centralized config
+        const BACKEND_URL = APP_CONFIG.BACKEND_URL;
 
         document.addEventListener('DOMContentLoaded', function() {
             // Ensure iframe does not intercept clicks when modal is open

@@ -6,20 +6,18 @@ const CONFIG = {
         ENABLE_ANALYTICS: false
     },
     production: {
-        BACKEND_URL: window.location.origin.includes('localhost') 
-            ? 'http://localhost:8000' 
-            : 'https://potato-disease-classification-production.up.railway.app',
+        // TODO: Replace with your actual Render backend URL after deployment
+        BACKEND_URL: 'https://potato-disease-backend-latest.onrender.com',
         API_TIMEOUT: 30000,
         ENABLE_ANALYTICS: true
     }
 };
 
-// Auto-detect environment
-const ENVIRONMENT = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-    ? 'development' 
-    : 'production';
+// Auto-detect environment based on hostname
+const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const ENVIRONMENT = isLocalhost ? 'development' : 'production';
 
-// Export active configuration
+// Export active configuration globally
 const APP_CONFIG = CONFIG[ENVIRONMENT];
 
 console.log(`🚀 Running in ${ENVIRONMENT} mode`);
