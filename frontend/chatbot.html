@@ -263,6 +263,7 @@
 
         body.dark-mode .message-content {
             border-color: var(--border);
+            color: var(--text);
         }
 
         .user-message .message-content {
@@ -368,6 +369,29 @@
 
         body.dark-mode .chat-input-container {
             border-top-color: var(--border);
+            background: var(--white);
+        }
+
+        body.dark-mode .chat-input {
+            background: var(--background);
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        body.dark-mode .chat-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        body.dark-mode .quick-reply-btn {
+            background: var(--background);
+            color: var(--text-secondary);
+            border-color: var(--border);
+        }
+
+        body.dark-mode .quick-reply-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
         }
 
         .chat-input-wrapper {
