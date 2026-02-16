@@ -7,9 +7,9 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![Docker](https://img.shields.io/badge/Docker-24.0-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Google Gemini](https://img.shields.io/badge/GenAI-Gemini_2.0-8E75B2?style=for-the-badge&logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit_Site-success?style=for-the-badge&logo=vercel&logoColor=white)](https://potato-blight-classification.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit_Site-success?style=for-the-badge&logo=vercel&logoColor=white)](https://blight-detection-in-leaves.vercel.app/)
 
-[View Demo](https://potato-blight-classification.vercel.app/) • [API Docs](https://potato-disease-classification-production.up.railway.app/docs) • [Report Bug](https://github.com/SarvagyaGupta-19/Potato-Disease-Classification-/issues)
+[View Demo](https://blight-detection-in-leaves.vercel.app/) • [Report Bug](https://github.com/SarvagyaGupta-19/Potato-Disease-Classification-/issues)
 
 </div>
 
@@ -154,6 +154,6 @@ The model was evaluated on a held-out test set of 323 images.
 <div align="center">
 
 **Developed by Sarvagya Gupta**
-[LinkedIn](https://linkedin.com/in/sarvagya-gupta-19) • [GitHub](https://github.com/SarvagyaGupta-19)
+[LinkedIn](https://www.linkedin.com/in/sarvagyagupta019) • [GitHub](https://github.com/SarvagyaGupta-19)
 
 </div>
