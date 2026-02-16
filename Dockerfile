@@ -8,7 +8,7 @@ WORKDIR /app
 # Added --fix-missing and clean up to prevent cache issues
 RUN apt-get update --fix-missing && \
     apt-get install -y --no-install-recommends \
-    libgl1-mesa-glx \
+    libgl1 \
     libglib2.0-0 \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
