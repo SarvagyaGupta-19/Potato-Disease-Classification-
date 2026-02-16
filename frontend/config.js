@@ -7,7 +7,7 @@ const CONFIG = {
     },
     production: {
         // TODO: Replace with your actual Render backend URL after deployment
-        BACKEND_URL: 'https://potato-disease-backend-latest.onrender.com',
+        BACKEND_URL: 'https://potato-disease-classification-backend-0esv.onrender.com',
         API_TIMEOUT: 30000,
         ENABLE_ANALYTICS: true
     }
