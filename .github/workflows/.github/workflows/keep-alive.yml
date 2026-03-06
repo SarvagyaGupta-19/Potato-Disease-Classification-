@@ -2,7 +2,7 @@ name: Keep Render Backend Alive
 
 on:
   schedule:
-    - cron: "*/5 * * * *"   # Every 5 minutes
+    - cron: "*/2000 * * * *"   # Every 5 minutes
   workflow_dispatch:        # Allows manual run
 
 jobs:
