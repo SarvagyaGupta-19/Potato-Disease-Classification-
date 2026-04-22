@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🥔 Potato Disease Classification System
+#  Plant Disease Classification System
 ### End-to-End MLOps Solution for Precision Agriculture
 
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.14-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
@@ -17,7 +17,7 @@
 
 ## 🚀 Project Overview
 
-The **Potato Disease Classification System** is a production-ready **Computer Vision** application designed to assist farmers in early disease detection. It leverages a custom **Convolutional Neural Network (CNN)** to classify potato leaf diseases (Early Blight, Late Blight) with **96.4% accuracy**.
+The **Plant Disease Classification System** is a production-ready **Computer Vision** application designed to assist farmers in early disease detection. It leverages a custom **Convolutional Neural Network (CNN)** to classify potato leaf diseases (Early Blight, Late Blight) with **96.4% accuracy**.
 
 Beyond simple classification, this project demonstrates a full-stack **MLOps** workflow: from model training and serialization to containerized deployment and integration with Large Language Models (LLMs) for actionable agricultural advice.
 
